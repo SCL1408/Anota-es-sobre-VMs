@@ -66,6 +66,7 @@
     - `apk add sudo`
     - `visudo`[^12]
     - adicionar na última linha, no final do arquivo a liberação de permição `<nome_user> ALL=(ALL) ALL` (exemplo de: `saler ALL=(ALL) ALL`)[^13]
+    - definir senha para o user para poder acessar sudo `passwd <user_name>` exemplo `passwd saler`
 
 [^1]: Remover o disco do drive virtual é necessário para evitar conflitos de boot e liberar a controladora para outros usos..
 [^2]: A interface eth0 como host-only permite a comunicação entre a VM e o host sem acesso externo, sendo ideal para testes internos de rede.
