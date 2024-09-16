@@ -60,6 +60,12 @@
     - Abrir arquivo `vim /etc/ssh/sshd_config`
     - Habilitar a propriedade PasswordAuthentication e definir seu valor como não [^11]
         - `PasswordAuthenticatin no`
+12. Instalar SUDO e dar permissões de admin para user
+    - `apk update`
+    - `apk upgrade`
+    - `apk add sudo`
+    - `visudo`[^12]
+    - adicionar na última linha, no final do arquivo a liberação de permição `<nome_user> ALL=(ALL) ALL` (exemplo de: `saler ALL=(ALL) ALL`)[^13]
 
 [^1]: Remover o disco do drive virtual é necessário para evitar conflitos de boot e liberar a controladora para outros usos..
 [^2]: A interface eth0 como host-only permite a comunicação entre a VM e o host sem acesso externo, sendo ideal para testes internos de rede.
@@ -72,3 +78,5 @@
 [^9]: O arquivo `authorized_keys` armazena chaves públicas de usuários autorizados a acessar o servidor via SSH, garantindo segurança no acesso.
 [^10]: O comando `echo` exibe uma linha de texto ou variável no terminal. No contexto acima, ele é usado para inserir a chave SSH no arquivo `authorized_keys`.
 [^11]: Habilitar a autenticação por chave SSH e desabilitar a autenticação por senha aumenta a segurança, prevenindo acessos não autorizados por senhas fracas.
+[^12]: O comando `visudo` abre o arquivo de configuração de sudoers de maneira segura, evitando erros de sintaxe que poderiam bloquear o acesso ao sudo.
+[^13]: A linha `<nome_user> ALL=(ALL) ALL` no arquivo sudoers permite que o usuário especificado execute qualquer comando como administrador, com privilégios de root.
