@@ -16,5 +16,19 @@
     - Ligar serviço de banco
         - `sudo rc-service mariadb start`
 4. Criar banco de dados com nome de acordo com backend
+5. Verificar se o banco está ouvindo a porta correta (3306)
+    - `netstat -tuln | grep 3306`[^2]
+6. Editar o arquivo /etc/my.cnf modificar a seção [mysqld] para ficar:[^3]
+
+    ```bash
+    [mysqld]
+    bind-address = 0.0.0.0
+    port = 3306
+    ```
+
+7. Editar o arquivo `/etc/my.cnf.d/mariadb-server.cnf` Remova ou comente qualquer menção a skip-networking[^4]
+8. Abrir banco e liberar geral as permissões para o user root
+    - `GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY 'root' WITH GRANT OPTION;`[^5]
+    - `FLUSH PRIVILEGES;`[^6]
 
 [^1]: footnote.
